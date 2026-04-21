@@ -1,17 +1,447 @@
 ---
+import '../styles/global.css';
 
+const services = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>`,
+    title: 'Landing Pages de alto rendimiento',
+    desc: 'Páginas que cargan en menos de 1s, optimizadas para conversión y posicionadas para rankear. Core Web Vitals perfectos.',
+    tag: 'Astro · SEO · CRO',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>`,
+    title: 'Web Apps dinámicas',
+    desc: 'Aplicaciones complejas con Next.js, autenticación, bases de datos en tiempo real y paneles de administración a medida.',
+    tag: 'Next.js · Supabase · TypeScript',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" x2="21" y1="6" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+    title: 'E-commerce a medida',
+    desc: 'Tiendas sin comisiones de plataforma, con checkout propio y rendimiento máximo. Nunca Tienda Nube. Nunca WooCommerce.',
+    tag: 'Next.js · Stripe · Supabase',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg>`,
+    title: 'Performance & SEO Técnico',
+    desc: 'Auditoría y optimización de sitios existentes. LCP < 2.5s, CLS = 0, metadatos dinámicos y JSON-LD estructurado.',
+    tag: 'Core Web Vitals · JSON-LD · Analytics',
+  },
+];
+
+const values = [
+  {
+    title: 'Ownership total',
+    desc: 'El código es tuyo desde el día uno. Sin licencias, sin ataduras a plataformas externas.',
+  },
+  {
+    title: 'Performance extrema',
+    desc: 'Obsesión por Core Web Vitals. Cada kilobyte importa. Cada milisegundo cuenta.',
+  },
+  {
+    title: 'Diseño único',
+    desc: 'Ningún cliente nuestro usa el mismo template. Cada proyecto parte de cero.',
+  },
+  {
+    title: 'SEO desde el día uno',
+    desc: 'Metadatos, JSON-LD y arquitectura implementados por defecto, no como un agregado final.',
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Agencia Web — Desarrollo a medida de alto rendimiento</title>
+    <meta name="description" content="Agencia argentina de desarrollo web a medida. Construimos webs y apps que generan resultados: rápidas, únicas y con ownership total para vos." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Agencia Web — Desarrollo a medida" />
+    <meta property="og:description" content="Webs y apps que convierten. Código tuyo, diseño único, performance extrema." />
+    <meta property="og:locale" content="es_AR" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Agencia Web",
+        "description": "Agencia argentina de desarrollo web a medida, liderada por ingenieras.",
+        "areaServed": "AR",
+        "knowsLanguage": "es-AR",
+        "priceRange": "USD"
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+  </head>
+
+  <body class="bg-black text-white antialiased">
+
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-5 flex items-center justify-between border-b border-white/5 bg-black/85 backdrop-blur-md">
+      <a href="/" class="font-heading font-black text-xl tracking-tight">
+        Agencia<span class="accent">Web</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-white/50 font-body">
+        <a href="#servicios" class="hover:text-white transition-colors duration-200 cursor-pointer">Servicios</a>
+        <a href="#nosotras" class="hover:text-white transition-colors duration-200 cursor-pointer">Nosotras</a>
+        <a href="#contacto" class="hover:text-white transition-colors duration-200 cursor-pointer">Contacto</a>
+      </div>
+      <a
+        href="#contacto"
+        class="px-5 py-2 bg-violet-600 hover:bg-violet-500 text-white text-sm font-body font-medium rounded-full transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
+      >
+        Hablemos
+      </a>
+    </nav>
+
+    <main>
+
+      <!-- HERO -->
+      <section id="hero" class="min-h-screen flex flex-col justify-center pt-24 pb-20 px-6 md:px-12 lg:px-20 relative overflow-hidden">
+
+        <!-- Background: dot grid -->
+        <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <svg class="absolute inset-0 w-full h-full opacity-[0.035]" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="dots" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.5" fill="white"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dots)"/>
+          </svg>
+
+          <!-- Violet ambient glow -->
+          <div class="absolute top-1/3 right-0 w-[700px] h-[700px] rounded-full bg-violet-700/15 blur-[140px] translate-x-1/3"></div>
+          <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-violet-900/10 blur-[100px] -translate-x-1/4"></div>
+
+          <!-- Geometric SVG — desktop only -->
+          <svg
+            class="absolute right-6 top-1/2 -translate-y-1/2 w-[42%] max-w-[520px] h-auto opacity-[0.12] hidden lg:block"
+            viewBox="0 0 600 600"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="300" cy="300" r="280" stroke="white" stroke-width="0.5"/>
+            <circle cx="300" cy="300" r="200" stroke="white" stroke-width="0.5"/>
+            <circle cx="300" cy="300" r="120" stroke="white" stroke-width="0.5"/>
+            <line x1="20" y1="300" x2="580" y2="300" stroke="white" stroke-width="0.5"/>
+            <line x1="300" y1="20" x2="300" y2="580" stroke="white" stroke-width="0.5"/>
+            <line x1="102" y1="102" x2="498" y2="498" stroke="white" stroke-width="0.5"/>
+            <line x1="498" y1="102" x2="102" y2="498" stroke="white" stroke-width="0.5"/>
+            <circle cx="300" cy="300" r="10" fill="#7C3AED"/>
+            <circle cx="300" cy="20" r="4" fill="#7C3AED" fill-opacity="0.7"/>
+            <circle cx="300" cy="580" r="4" fill="#7C3AED" fill-opacity="0.7"/>
+            <circle cx="20" cy="300" r="4" fill="#7C3AED" fill-opacity="0.7"/>
+            <circle cx="580" cy="300" r="4" fill="#7C3AED" fill-opacity="0.7"/>
+            <circle cx="102" cy="102" r="4" fill="#7C3AED" fill-opacity="0.5"/>
+            <circle cx="498" cy="498" r="4" fill="#7C3AED" fill-opacity="0.5"/>
+            <circle cx="498" cy="102" r="4" fill="#7C3AED" fill-opacity="0.5"/>
+            <circle cx="102" cy="498" r="4" fill="#7C3AED" fill-opacity="0.5"/>
+            <rect x="270" y="270" width="60" height="60" stroke="#7C3AED" stroke-width="0.8" stroke-opacity="0.6"/>
+          </svg>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto w-full">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-violet-500/25 bg-violet-500/8 text-violet-300 text-xs font-body font-medium mb-10">
+            <span class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
+            Agencia argentina · Desarrollo a medida · Sin templates
+          </div>
+
+          <h1 class="font-heading font-black leading-[0.88] tracking-tight text-white mb-8 hero-title">
+            Webs que<br/>
+            <em class="not-italic accent">convierten.</em>
+          </h1>
+
+          <p class="font-body text-white/45 max-w-lg mb-12 leading-relaxed hero-sub">
+            Construimos sitios web y aplicaciones a medida que generan resultados reales.
+            Sin templates. Código 100% tuyo. Performance que se siente.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="#contacto"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-violet-600 hover:bg-violet-500 text-white font-body font-medium rounded-full transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
+            >
+              Empezá tu proyecto
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a
+              href="#servicios"
+              class="inline-flex items-center justify-center px-8 py-4 border border-white/10 hover:border-white/25 text-white/60 hover:text-white font-body font-medium rounded-full transition-all duration-200 cursor-pointer"
+            >
+              Ver servicios
+            </a>
+          </div>
+
+          <!-- Stats bar -->
+          <div class="flex flex-wrap gap-x-10 gap-y-5 mt-20 pt-10 border-t border-white/8">
+            {[
+              { num: '100%', label: 'Ownership del código' },
+              { num: '98+', label: 'PageSpeed Score' },
+              { num: '0', label: 'Templates usados' },
+              { num: 'USD', label: 'Precio transparente' },
+            ].map((stat) => (
+              <div>
+                <div class="font-heading font-black text-2xl text-white">{stat.num}</div>
+                <div class="font-body text-xs text-white/35 mt-1 tracking-wide">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="servicios" class="py-28 px-6 md:px-12 lg:px-20">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-16">
+            <p class="font-body text-violet-400 text-xs font-medium uppercase tracking-widest mb-4">Servicios</p>
+            <h2 class="font-heading font-black text-white leading-tight tracking-tight section-title">
+              Lo que construimos
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 divide-y divide-x-0 md:divide-x md:divide-y-0 divide-white/5 border border-white/5 rounded-2xl overflow-hidden" style="grid-template-rows: auto auto;">
+            {services.map((service, i) => (
+              <div class={`bg-black p-8 lg:p-10 group hover:bg-white/[0.025] transition-colors duration-300 cursor-default${i === 1 || i === 3 ? ' md:border-l-0' : ''}${i >= 2 ? ' md:border-t md:border-white/5' : ''}`}>
+                <div class="w-11 h-11 rounded-xl bg-violet-500/8 border border-violet-500/15 flex items-center justify-center text-violet-400 mb-6 group-hover:bg-violet-500/15 transition-colors duration-300">
+                  <Fragment set:html={service.icon} />
+                </div>
+                <h3 class="font-heading font-bold text-white text-lg mb-3">{service.title}</h3>
+                <p class="font-body text-white/45 text-sm leading-relaxed mb-6">{service.desc}</p>
+                <span class="font-body text-xs text-violet-400/60 tracking-wider">{service.tag}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- VALUES -->
+      <section id="nosotras" class="py-28 px-6 md:px-12 lg:px-20 relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div class="absolute bottom-0 left-1/4 w-[700px] h-[500px] rounded-full bg-violet-900/10 blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+          <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <div>
+              <p class="font-body text-violet-400 text-xs font-medium uppercase tracking-widest mb-4">Por qué nosotras</p>
+              <h2 class="font-heading font-black text-white leading-tight tracking-tight mb-8 section-title">
+                Ingeniería de<br/>nivel enterprise.<br/><span class="text-white/30">Para tu negocio.</span>
+              </h2>
+              <p class="font-body text-white/45 leading-relaxed max-w-md">
+                Somos una agencia boutique argentina liderada por ingenieras. No trabajamos con templates ni plataformas que limitan el crecimiento de tu negocio. Cada línea de código es tuya.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {values.map((v) => (
+                <div class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-violet-500/20 hover:bg-white/[0.035] transition-all duration-300 cursor-default">
+                  <div class="w-2 h-2 rounded-full bg-violet-500 mb-5"></div>
+                  <h3 class="font-heading font-bold text-white text-base mb-2">{v.title}</h3>
+                  <p class="font-body text-white/40 text-sm leading-relaxed">{v.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contacto" class="py-28 px-6 md:px-12 lg:px-20">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+
+            <div>
+              <p class="font-body text-violet-400 text-xs font-medium uppercase tracking-widest mb-4">Contacto</p>
+              <h2 class="font-heading font-black text-white leading-tight tracking-tight mb-8 section-title">
+                Trabajemos<br/>juntas.
+              </h2>
+              <p class="font-body text-white/45 leading-relaxed max-w-sm mb-12">
+                Contanos tu proyecto. En menos de 48 horas te respondemos con una propuesta técnica y presupuesto en USD.
+              </p>
+
+              <div class="space-y-5">
+                {[
+                  {
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.58 1.32h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.72 5.72l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+                    text: 'Respuesta en menos de 48hs',
+                  },
+                  {
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" x2="12" y1="1" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+                    text: 'Presupuesto en USD o anclado al blue',
+                  },
+                  {
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+                    text: 'Sin letra chica. Ownership total garantizado.',
+                  },
+                ].map((item) => (
+                  <div class="flex items-center gap-3 text-white/35 font-body text-sm">
+                    <span class="text-violet-500 flex-shrink-0">
+                      <Fragment set:html={item.icon} />
+                    </span>
+                    {item.text}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Form — conectar con Resend en /api/contact -->
+            <form class="space-y-5" action="/api/contact" method="POST" novalidate>
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="nombre" class="block font-body text-sm text-white/45 mb-2">Nombre</label>
+                  <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    required
+                    autocomplete="name"
+                    placeholder="Tu nombre"
+                    class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/8 text-white placeholder-white/15 font-body text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:border-transparent hover:border-white/18 transition-colors duration-200"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block font-body text-sm text-white/45 mb-2">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    autocomplete="email"
+                    placeholder="vos@empresa.com"
+                    class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/8 text-white placeholder-white/15 font-body text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:border-transparent hover:border-white/18 transition-colors duration-200"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="mensaje" class="block font-body text-sm text-white/45 mb-2">Contanos tu proyecto</label>
+                <textarea
+                  id="mensaje"
+                  name="mensaje"
+                  rows="6"
+                  required
+                  placeholder="¿Qué querés construir? ¿Cuál es el objetivo del proyecto? ¿Tenés algún plazo o presupuesto estimado?"
+                  class="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/8 text-white placeholder-white/15 font-body text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:border-transparent hover:border-white/18 transition-colors duration-200 resize-none"
+                ></textarea>
+              </div>
+
+              <button
+                id="submit-btn"
+                type="submit"
+                class="w-full py-4 px-8 bg-violet-600 hover:bg-violet-500 active:bg-violet-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-body font-medium rounded-xl transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              >
+                <span id="btn-text">Enviar mensaje</span>
+              </button>
+
+              <p id="form-error" class="hidden font-body text-sm text-red-400 text-center"></p>
+
+              <p class="font-body text-xs text-white/18 text-center">
+                Tu información no se comparte con terceros.
+              </p>
+            </form>
+
+            <!-- Success state (hidden by default) -->
+            <div id="form-success" class="hidden flex flex-col items-center justify-center py-16 text-center gap-6">
+              <div class="w-14 h-14 rounded-full bg-violet-500/15 border border-violet-500/30 flex items-center justify-center text-violet-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-bold text-white text-xl mb-2">¡Mensaje enviado!</h3>
+                <p class="font-body text-white/45 text-sm">Te respondemos en menos de 48 horas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-10 px-6 md:px-12 lg:px-20">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="/" class="font-heading font-black text-lg tracking-tight">
+          Agencia<span class="accent">Web</span>
+        </a>
+        <p class="font-body text-xs text-white/20">
+          © {new Date().getFullYear()} Agencia Web · Hecho con obsesión desde Argentina.
+        </p>
+        <a href="#contacto" class="font-body text-sm text-white/35 hover:text-violet-400 transition-colors duration-200 cursor-pointer">
+          Trabajemos juntas →
+        </a>
+      </div>
+    </footer>
+
+  </body>
 </html>
+
+<script>
+  const form       = document.querySelector<HTMLFormElement>('form[action="/api/contact"]')!;
+  const submitBtn  = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText    = document.getElementById('btn-text')!;
+  const errorEl    = document.getElementById('form-error')!;
+  const successEl  = document.getElementById('form-success')!;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.classList.add('hidden');
+    errorEl.textContent = '';
+
+    submitBtn.disabled = true;
+    btnText.textContent = 'Enviando...';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+      const json = await res.json();
+
+      if (!res.ok) throw new Error(json.error ?? 'Error desconocido.');
+
+      form.classList.add('hidden');
+      successEl.classList.remove('hidden');
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Error al enviar. Intentá de nuevo.';
+      errorEl.textContent = msg;
+      errorEl.classList.remove('hidden');
+      submitBtn.disabled = false;
+      btnText.textContent = 'Enviar mensaje';
+    }
+  });
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900&family=Space+Grotesk:wght@300;400;500&display=swap');
+
+  .font-heading { font-family: 'Archivo', sans-serif; }
+  .font-body    { font-family: 'Space Grotesk', sans-serif; }
+
+  .accent { color: #7C3AED; }
+
+  .hero-title   { font-size: clamp(3.2rem, 9vw, 9rem); }
+  .hero-sub     { font-size: clamp(1rem, 1.8vw, 1.2rem); }
+  .section-title{ font-size: clamp(2rem, 4.5vw, 3.8rem); }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
